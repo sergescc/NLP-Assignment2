@@ -11,11 +11,11 @@ public class NGramView extends HashMap<Integer, NGramView>
 	 */
 	private static final long serialVersionUID = 1289718971767941572L;
 	
-	private Integer count;
+	private Long count;
 	
 	public NGramView()
 	{
-		count = 1;
+		count = 1L;
 	}
 	public void addNGram (List<Integer> values)
 	{
@@ -27,12 +27,10 @@ public class NGramView extends HashMap<Integer, NGramView>
 			if (this.containsKey(thisLevel))
 			{
 				this.get(thisLevel).addCount();
-				
 			}
 			else
 			{
 				this.put(thisLevel, new NGramView ());
-				
 			}
 		}
 		else if (values.size() < 1)
@@ -47,12 +45,79 @@ public class NGramView extends HashMap<Integer, NGramView>
 		
 	}
 	
+	public Long getLocalCounts (List<Integer> nGram)
+	{
+		Long count = 0L;
+		
+		if (nGram.size() >= 1 && this.containsKey(nGram.get(0)))
+		{
+			Integer thisLevel = nGram.get(0);
+			
+			if (nGram.size() <= 1)
+			{
+				count = Long.valueOf(this.get(thisLevel).getCount());			
+			}
+			else
+			{
+				nGram.remove(0);
+				count = this.get(thisLevel).getLocalCounts(nGram);
+				
+			}
+		}
+		
+		return count;
+	}
+	
+	
+	public Long getTotalCounts(int depth)
+	{
+		Long totalCount = 0L;
+		if ( depth <= 0)
+		{
+			for (Integer key : this.keySet())
+			{
+				totalCount += this.get(key).getCount();
+			}
+		}
+		else
+		{
+			depth--;
+			for ( Integer key: this.keySet())
+			{
+				totalCount += this.get(key).getTotalCounts(depth);
+			}
+		}
+		
+		
+		return totalCount;
+	}
+	
+	public Long getUniqueCounts (Integer depth)
+	{
+		Long uniqueCounts = 0L;
+		if (depth <= 0)
+		{
+			uniqueCounts = Long.valueOf(this.size());
+		}
+		else
+		{
+			depth--;
+			for (Integer key : this.keySet())
+			{
+				uniqueCounts += this.get(key).getUniqueCounts(depth--);
+			}
+		}
+		
+		return uniqueCounts;
+	}
+	
+	
 	public void addCount()
 	{
 		count++;
 	}
 	
-	public Integer getCount()
+	public Long getCount()
 	{
 		return count;
 	}
