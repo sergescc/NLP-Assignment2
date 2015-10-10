@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#Read Arguments
+args=("$@")
+IN_FILE=${args[0]}
+OUT_TOKEN=${args[1]}
+OUT_FILE=${args[2]}
+
+
+OPEN_NLP_HOME="/opt/apache-opennlp-1.5.3"
+#Check Argmunets
+if [ -z "$IN_FILE" ]; then
+	echo -en "[\033[31m ERR \033[m] Need a valid source File\n"
+	exit 0
+fi
+if [ -e "$IN_FILE" ] && [ -f "$IN_FILE" ]; then 
+
+
+#command
+$OPEN_NLP_HOME/bin/opennlp SentenceDetector $OPEN_NLP_HOME/models/en-sent.bin < $IN_FILE | $OPEN_NLP_HOME/bin/opennlp TokenizerME $OPEN_NLP_HOME/models/en-token.bin
+ 
+fi
+
+exit 0
+1
