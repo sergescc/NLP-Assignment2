@@ -1,0 +1,34 @@
+ #
+ 
+ 
+ Sergio Coronado Assignment #2 
+
+ About: 
+
+ This is the Submission for assignment2
+
+ 	Problem 1:
+		Preprocess shell script that executes the openNLP software
+
+	Problem 2:
+		Bin:
+			NGramTool.jar : executable jar for problem
+			ngram : bash script with desired configuration for problem 2 
+			main: hold the main class of the nGram Tool
+			probability: holds the propabbility calculator of the ngram tool
+			struct: holds the NGramView model and a miscellaneuos counts class
+			training: holds the Model class with training, saving and loading functions
+
+		Src:
+			Contains the Source code for the class discussed above
+
+	Problem 3:
+
+		Bin: 
+			Same as above but configured for problem3 
+
+Note: for Problem 2 and 3 the bash script must be executed from within the bin folder due to its dependency to the NGramTool.jar
+
+Note: All probabilities where caculcated using capitalization in mind so the probabity of the bigram "That will" will not be the same as the probability f the bigram "that will"
+
+

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+
+# Sergio Coronado Assignment 2 Problem 2 
+# Executes Jar and passes in arguments 
+
+java -jar ./NGramTool.jar "$@"
