@@ -1,0 +1,9 @@
+This homework is a programming assignment.  You can use any programming
+language you are comfortable with, but make sure your code runs on the class
+server:  129.63.16.131.  You will need to submit both your source code and the
+binaries, if applicable.  If you use an interpreted language, please make sure that
+your code is compatible with the resources installed on the server.  If you need
+to install any additional software, please notify me.
+Grading criteria; This homework will be graded based on correctness of the
+output.  Please document your code and structure it well if you'd like to enable
+me to assign partial credit. 
