@@ -80,7 +80,7 @@ public class AdditiveCalculator {
 			
 			Long nGramCount = trainedSet.getNGramCount(ngram);
 			
-			probability += Math.log10((delta + nGramCount)/(trainedSet.getVocabSize() + parentCount));
+			probability += Math.log10((delta + nGramCount)/(trainedSet.getVocabSize()*delta + parentCount));
 			
 		}
 		
